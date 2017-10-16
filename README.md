@@ -40,6 +40,12 @@ memcpy:    100us - 1000us:  0.00%  0
 memcpy:           >1ms:      ---   0
 ```
 
+## Requirements
+
+* *local_types.h* must be stored in the include path as well as
+  *cbProf.h* and *cbProf.hpp*.
+
+
 ## cbProf
 
 Code block profiler, a C implementation.
