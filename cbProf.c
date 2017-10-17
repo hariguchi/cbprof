@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <inttypes.h>
 
 #include "cbProf.h"
 
@@ -182,7 +183,7 @@ cbProfMakeHist (cbProf* p)
     char* s   = p->msg;
 
     n = snprintf(s, len, "%s %d calls, %.2f us, "
-                 "%.2f us/call, min: %ld ns, max: %ld ns\n",
+                 "%.2f us/call, min: %"PRIu64" ns, max: %"PRIu64" ns\n",
                  p->banner, p->nCalls, tmsUsecs(&p->sum),
                  tmsUsecs(&p->sum)/(double)p->nCalls,
                  tmsNanoSecs(&p->min), tmsNanoSecs(&p->max));
