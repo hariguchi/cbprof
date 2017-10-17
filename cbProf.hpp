@@ -55,7 +55,7 @@ using timePoint = std::chrono::time_point<hrclock>;
  *       prof.end();
  *   }
  *   prof.makeHist();
- *   printf("%s\n", prof.getCstr());
+ *   std.cout << prof.str() << "\n";
  */
 class prof {
 private:
@@ -167,6 +167,8 @@ prof::end ()
         i = 18 + (delta.count()/10000);
     } else if (delta < nsec(1000*1000)) {
         i = 27 + (delta.count()/100000);
+    } else {
+        i = 37;
     }
     ++hist[i];
 
