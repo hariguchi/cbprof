@@ -56,14 +56,12 @@ $(LIBTARGET): $(LIBOBJS)
 
 .PHONY: perf
 perf:
-	$(MAKE) -f $(lastword $(MAKEFILE_LIST)) perfTest \
-	OPTFLAGS=-O3 DEFS=-DNODEBUG
+	$(MAKE) -f $(lastword $(MAKEFILE_LIST)) OPTFLAGS=-O3 DEFS=-DNODEBUG
 
 .PHONY: clean
 clean:
-	rm -f $(TARGET) $(UTESTTARGET) $(PTESTTARGET) \
-	$(TARGET).exe $(UTESTTARGET).exe $(PTESTTARGET).exe \
-	$(LIBTARGET) $(OBJS) $(LIBOBJS) $(DEPDIR)/*.d *.bak *.exe.* *~
+	rm -f $(TARGET) $(TARGET).exe $(LIBTARGET) $(OBJS) $(LIBOBJS) \
+	$(DEPDIR)/*.d *.bak *.exe.* *~
 
 
 $(OBJDIR)/%.o : %.c
