@@ -36,6 +36,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <inttypes.h>
 
 #ifdef __cplusplus
 #include <iostream>
@@ -106,6 +107,25 @@ enum {
     MEM_TBITMAP,
 };
 
+/*
+ * gcc specific macros
+ */
+#ifdef __GNUC__
+
+#ifndef __aligned
+#define __aligned(_x) __attribute__ ((__aligned__(x)))
+#endif /* __aligned */
+
+#ifndef __packed
+#define __packed __attribute__ (packed)
+#endif /* __packed */
+
+#else /* __GNUC__ */
+
+#define __aligned(_x)
+#define __packed
+
+#endif /* __GNUC__ */
 
 
 #define elementsOf(_array_)       (sizeof((_array_))/sizeof((_array_)[0]))
